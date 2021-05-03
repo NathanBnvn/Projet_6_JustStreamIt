@@ -8,74 +8,79 @@
 	</head>
 
 	<body>
-		<header class="head">
-			<h2 class="logo">JustStreamIt</h2>
+		<header id="head">
+			<h2 id="logo">JustStreamIt</h2>
 
-			<nav class="navigation">
-				<h3 class="homeBttn">Accueil</h3>
-				<h3 class="categoryBttn">Catégories</h3>
+			<nav id="navigation">
+				<h3 id="homeBttn">Accueil</h3>
+				<h3 id="categoryBttn">Catégories</h3>
 			</nav>
 
 		</header>
 
 		<section>
 			<!-- film à l'affiche -->
-			<div class="headmovie">
-				<h3 class="videoTitle">titre de la video</h3>
-				<div class="playBttn">Play </div>
+			<div id="headmovie">
+				<h3 id="videoTitle">titre de la video</h3>
+				<p> <img id=feature src=""> </p>
+				<button id="playBttn">Play </button>
 			</div>
 
 		</section>
 			
 		<section>
 			<!-- films les mieux notés -->
-			<div class="bestcategory">
-				<div class="changeBttn"></div>
-				<div class="case"></div>
-				<div class="case"></div>
-				<div class="case"></div>
-				<div class="case"></div>
-				<div class="changeBttn"></div>
+			<div id="bestcategory">
+				<button class="changeButton" id="previousBestCategory"></button>
+				<!-- <div class="case" id=0></div>
+				<div class="case" id=1></div>
+				<div class="case" id=2></div>
+				<div class="case" id=3></div>
+				<div class="case" id=4></div> -->
+				<button class="changeButton" id="nextBestCategory"></button>
 			</div>
 		</section>
 
 		<section>
 			<!-- categorie 1 -->
-			<div class="firstcategory">
-				<div class="changeBttn"></div>
+			<div id="firstcategory">
+				<button class="changeButton" id="previousFirstCategory"></button>
 				<div class="case"></div>
 				<div class="case"></div>
 				<div class="case"></div>
 				<div class="case"></div>
-				<div class="changeBttn"></div>
+				<div class="case"></div>
+				<button class="changeButton" id="nextFirstCategory"></button>
 			</div>
 		</section>
 
 		<section>
 			<!-- categorie 2 -->
-			<div class="secondcategory">
-				<div class="changeBttn"></div>
+			<div id="secondcategory">
+				<button class="changeButton"></button>
 				<div class="case"></div>
 				<div class="case"></div>
 				<div class="case"></div>
 				<div class="case"></div>
-				<div class="changeBttn"></div>
+				<div class="case"></div>
+				<button class="changeButton"></button>
 			</div>
 		</section>
 
 		<section>
 			<!-- categorie 3 -->
-			<div class="thirdcategory">
-				<div class="changeBttn"></div>
+			<div id="thirdcategory">
+				<button class="changeButton"></button>
 				<div class="case"></div>
 				<div class="case"></div>
 				<div class="case"></div>
 				<div class="case"></div>
-				<div class="changeBttn"></div>
+				<div class="case"></div>
+				<button class="changeButton"></button>
 			</div>
 		</section>
 
 		<!-- Comentaire-->
-
+		<script src="script.js"></script>
 	</body>
 </html>

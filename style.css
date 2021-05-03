@@ -17,14 +17,20 @@ section, summary, time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+image
+{
+	position: center;
+}
+
 @font-face {
 	font-family: 'rambla';
 	src: url('fonts/Rambla-Regular.ttf') format('truetype');
 }
 
-.head, .navigation
+#head, #navigation
 {
 	background-color: rgb(59,94,125);
+	margin : auto;
 	color : white;
 	width : 100%;
 	height: 20vh;
@@ -33,40 +39,40 @@ section, summary, time, mark, audio, video {
 	font-size: 20px;
 }
 
-.navigation
+#navigation
 {
 	display: flex;
 	justify-content: flex-end;
 	margin-right: 60px;
 }
 
-.logo
+#logo
 {
 	margin-left: 40px;
 	font-size: 30px;
 }
 
-.homeBttn
+#homeBttn
 {
 	margin-right: 30px;
 }
 
-.headmovie, .bestcategory, .firstcategory, .secondcategory, .thirdcategory
+#headmovie, #bestcategory, #firstcategory, #secondcategory, #thirdcategory
 {
 	display: flex;
-	height: 70vh;
+	min-height: 70vh;
 	width: 100vw;
 	border: 5px red solid;
 
 }
 
-.bestcategory, .firstcategory, .secondcategory, .thirdcategory
+#bestcategory, #firstcategory, #secondcategory, #thirdcategory
 {
 	align-items: center;
 	justify-content: space-around;
 }
 
-.headmovie
+#headmovie
 {
 	display: flex;
 	flex-direction: column;
@@ -76,14 +82,14 @@ section, summary, time, mark, audio, video {
 	background-color: blue;
 }
 
-.playBttn, .videoTitle
+#playBttn, #videoTitle
 {
 	color: white;
 	margin-left: 50px;
 	margin-top: 20px;
 }
 
-.playBttn
+#playBttn
 {
 	background: rgb(252, 74, 3);
 	font-size: 20px;
@@ -95,15 +101,31 @@ section, summary, time, mark, audio, video {
 
 .case
 {
-	height: 240px;
-	width: 240px;
+	height: 400px;
+	width: 190px;
 	border: 5px grey solid;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+
 }
 
-.changeBttn
+.changeButton
 {
 	height: 50px;
 	width: 50px;
 	border: 5px orange solid;
 }
 
+.moreButton
+{
+	height: 15px;
+	width: 50px;
+	border: 2px red solid; 
+}
+
+.plotStructure
+{
+	border: 3px green solid;
+}
