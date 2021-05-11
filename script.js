@@ -1,10 +1,64 @@
 
-// Slideshow
-
-
 window.onload = fetchCategories()
 
-/// Manage Category
+//counter = 1
+segments = []
+images = []
+titles = []
+descriptions = []
+
+trackBest = document.getElementById("trackZero")
+trackFirst = document.getElementById("trackOne")
+trackSecond = document.getElementById("trackTwo")
+trackThird = document.getElementById("trackThree")
+
+sectionWidth = document.getElementById("bestcategory").offsetWidth
+
+let previousBest = document.getElementById("previousBestCategory")
+let nextBest = document.getElementById("nextBestCategory")
+let previousFirst = document.getElementById("previousFirstCategory")
+let nextFirst = document.getElementById("nextFirstCategory")
+let previousSecond = document.getElementById("previousSecondCategory")
+let nextSecond = document.getElementById("nextSecondCategory")
+let previousThird = document.getElementById("previousThirdCategory")
+let nextThird = document.getElementById("nextThirdCategory")
+
+previousBest.addEventListener("click", () => {
+	trackBest.style.transform = `translateX(${0}px)`
+})
+nextBest.addEventListener("click", () => {
+	incrementValue = sectionWidth / 4 * 3 //counter
+	trackBest.style.transform = `translateX(-${incrementValue}px)`;
+})
+
+previousFirst.addEventListener("click", () => {
+	trackFirst.style.transform = `translateX(${0}px)`
+})
+
+nextFirst.addEventListener("click", () => {
+	incrementValue = sectionWidth / 4 * 3 //counter
+	trackFirst.style.transform = `translateX(-${incrementValue}px)`;
+})
+
+previousSecond.addEventListener("click", () => {
+	trackSecond.style.transform = `translateX(${0}px)`
+})
+
+nextSecond.addEventListener("click", () => {
+	incrementValue = sectionWidth / 4 * 3 //counter
+	trackSecond.style.transform = `translateX(-${incrementValue}px)`;
+})
+
+previousThird.addEventListener("click", () => {
+	trackThird.style.transform = `translateX(${0}px)`
+})
+
+nextThird.addEventListener("click", () => {
+	incrementValue = sectionWidth / 4 * 3 //counter
+	trackThird.style.transform = `translateX(-${incrementValue}px)`;
+})
+
+
 function fetchCategories(){
 	var cat1 = fetch("http://127.0.0.1:8000/api/v1/titles/?imdb_score_min=9&sort_by=-imdb_score")
 	var cat2 = fetch("http://127.0.0.1:8000/api/v1/titles/?imdb_score_min=9&page=2&sort_by=-imdb_score")
@@ -18,46 +72,15 @@ function fetchCategories(){
 	Promise.all([cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8]).then(values => {
 		return Promise.all(values.map(res => res.json()))
 	}).then(values => {
-		//values.forEach(loadView)
-		//values.forEach(getMovies(values[0].results))
-		//console.log(values[0].results)
 		loopMovies(values)
-		//loadBestSection()
 	})
 }
 
 function loopMovies(values){
 	for(i of values){
 		getMovies(i.results)
-
 	}
-
 }
-
-// function getCategories(categoryUrl){
-// 	return new Promise((resolve, reject) => {
-// 		fetch("http://127.0.0.1:8000/api/v1/titles/?" + categoryUrl + "&sort_by=-imdb_score").then(response => {
-// 			return response.json()
-// 		}).then(categories => {
-// 			resolve(categories)
-// 			console.log(categoryUrl)
-// 		}).catch(error => {
-// 			reject(error)
-// 		})
-// 	})
-// }
-
-// function nextPage(next) {
-// 	return new Promise((resolve, reject) => {
-// 		fetch(next).then(response => {
-// 			return response.json()
-// 		}).then(url => {
-// 			return 
-// 		})
-
-// 	})
-
-// }
 
 function getMovies(results){
 	var movie1 = fetch(results[0].url)
@@ -70,28 +93,23 @@ function getMovies(results){
 		return Promise.all(values.map(res => res.json()))
 	}).then(values => {
 		values.forEach(storeData)
+		//console.log(values)
 	})
 }
 
-segments = []
-images = []
-titles = []
-descriptions = []
-
 function storeData(id, title, image_url, description) {
-	//segments.push(segment)
 	titles.push(id.title)
 	images.push(id.image_url)
 	descriptions.push(id.description)
 
 	if(titles.length == 40){
 		loadHeadMovie(titles, images, descriptions)
+		//console.log(titles)
 
-		for(var e = 1; e < 40; e++){
+		for(var e = 1; e < 41; e++){
 			loadView(e)
 		}
 	}
-	
 }
 
 function loadHeadMovie(titles, images, descriptions){
@@ -129,40 +147,15 @@ function loadView(e){
 	segment.appendChild(moreButton)
 	segment.appendChild(paragraph)
 
-	if(e < 5) {
-		loadBestCategory(segment)
-	}else if(e > 9 && e < 14){
-		loadFirstCategory(segment)
-	}else if(e > 19 && e < 24){
-		loadSecondCategory(segment)
-	}else if(e > 29 && e < 34){
-		loadThirdCategory(segment)
+	if(e < 8) {
+		trackBest.appendChild(segment)
+	}else if(e > 9 && e < 17){
+		trackFirst.appendChild(segment)
+	}else if(e > 19 && e < 27){
+		trackSecond.appendChild(segment)
+	}else if(e > 29 && e < 37){
+		trackThird.appendChild(segment)
 	}
-
  }
-
-function loadBestCategory(segment){
-	bestSection = document.getElementById('bestcategory')
-	nextButton = document.getElementById("nextBestCategory")
-	bestSection.insertBefore(segment, nextButton)
-}
-
-function loadFirstCategory(segment){
-	firstSection = document.getElementById('firstcategory')
-	nextButton = document.getElementById("nextFirstCategory")
-	firstSection.insertBefore(segment, nextButton)
-}
-
-function loadSecondCategory(segment){
-	secondSection = document.getElementById('secondcategory')
-	nextButton = document.getElementById("nextSecondCategory")
-	secondSection.insertBefore(segment, nextButton)
-}
-
-function loadThirdCategory(segment){
-	thirdSection = document.getElementById('thirdcategory')
-	nextButton = document.getElementById("nextThirdCategory")
-	thirdSection.insertBefore(segment, nextButton)
-}
 
 

@@ -22,6 +22,15 @@ image
 	position: center;
 }
 
+section
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 @font-face {
 	font-family: 'rambla';
 	src: url('fonts/Rambla-Regular.ttf') format('truetype');
@@ -60,22 +69,40 @@ image
 #headmovie, #bestcategory, #firstcategory, #secondcategory, #thirdcategory
 {
 	display: flex;
-	min-height: 90vh;
-	width: 100%;
 	border: 5px red solid;
 
 }
 
 #bestcategory, #firstcategory, #secondcategory, #thirdcategory
 {
+	width: 1320px;
+	height: 680px;
+	overflow: hidden;
 	align-items: center;
-	justify-content: space-around;
+
+	/*
+
+	justify-content: flex-start;
+	flex-shrink: 0;
+	overflow: hidden;
+	width: 1320px;
+	min-width: 1300px;
+	height: 500px;
+	min-height: 480px;
+	*/
+}
+
+#trackZero, #trackOne, #trackTwo, #trackThree {
+	display: flex;
+	transition: transform 2 linear;
 }
 
 #headmovie
 {
 	display: flex;
 	flex-direction: column;
+	height: 90vh;
+	width: 100%;
 	justify-content: center;
 	font-size: 25px;
 	background-position: center;
@@ -102,15 +129,28 @@ image
 
 .segment
 {
+	flex-shrink: 0;
 	height: 480px;
-	width: 190px;
+	width: 330px;
+	padding-right: 50px;
+	padding-left: 50px;
+	box-sizing: border-box;
+	align-items: center;
+	text-align: center;
+	font-size: 15px;
 	border: 5px grey solid;
+
+	/*
+	height: 480px;
+	min-width: 200px;
+	
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	align-items: center;
-	text-align: center;
-	font-size: 14px;
+	margin-left: 40px; 
+	margin-right: 40px;
+	*/
+
 }
 
 .changeButton
@@ -118,18 +158,17 @@ image
 	height: 50px;
 	width: 50px;
 	border: 5px orange solid;
+	border-radius: 50%;
+	margin-left: 40px;
+	margin-right: 40px;
 }
 
 .moreButton
 {
 	height: 15px;
-	min-width: 50px;
+	width: 50px;
+	border-radius: 5%;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	border: 2px red solid; 
-}
-
-.plotStructure
-{
-	border: 3px green solid;
 }
