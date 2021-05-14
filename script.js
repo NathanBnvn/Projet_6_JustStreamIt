@@ -2,17 +2,36 @@
 window.onload = fetchCategories()
 
 //counter = 1
+maxResultCount = 40
 segments = []
 images = []
 titles = []
+genres = []
 descriptions = []
+longDescriptions = []
+dates = []
+rates = []
+imdbScores = []
+director = []
+actor = []
+durations = []
+origins = []
+boxOffices = []
+
+let overlayer = document.getElementById("overlayer")
+let modal = document.getElementById("modal")
+let closeButton = document.getElementById("closeButton")
+
+sectionWidth = document.getElementById("bestcategory").offsetWidth
+
+incrementValue = sectionWidth / 4 * 3 //counter
+
+/////////////////////////--- Possibilité de refactoriser ---////////////////////////////
 
 trackBest = document.getElementById("trackZero")
 trackFirst = document.getElementById("trackOne")
 trackSecond = document.getElementById("trackTwo")
 trackThird = document.getElementById("trackThree")
-
-sectionWidth = document.getElementById("bestcategory").offsetWidth
 
 let previousBest = document.getElementById("previousBestCategory")
 let nextBest = document.getElementById("nextBestCategory")
@@ -27,7 +46,6 @@ previousBest.addEventListener("click", () => {
 	trackBest.style.transform = `translateX(${0}px)`
 })
 nextBest.addEventListener("click", () => {
-	incrementValue = sectionWidth / 4 * 3 //counter
 	trackBest.style.transform = `translateX(-${incrementValue}px)`;
 })
 
@@ -36,7 +54,6 @@ previousFirst.addEventListener("click", () => {
 })
 
 nextFirst.addEventListener("click", () => {
-	incrementValue = sectionWidth / 4 * 3 //counter
 	trackFirst.style.transform = `translateX(-${incrementValue}px)`;
 })
 
@@ -45,7 +62,6 @@ previousSecond.addEventListener("click", () => {
 })
 
 nextSecond.addEventListener("click", () => {
-	incrementValue = sectionWidth / 4 * 3 //counter
 	trackSecond.style.transform = `translateX(-${incrementValue}px)`;
 })
 
@@ -54,9 +70,10 @@ previousThird.addEventListener("click", () => {
 })
 
 nextThird.addEventListener("click", () => {
-	incrementValue = sectionWidth / 4 * 3 //counter
 	trackThird.style.transform = `translateX(-${incrementValue}px)`;
 })
+
+///////////////////////////////////////////////////////////////////////////////////////
 
 
 function fetchCategories(){
@@ -97,17 +114,28 @@ function getMovies(results){
 	})
 }
 
-function storeData(id, title, image_url, description) {
+function storeData(id, title, image_url, description){
 	titles.push(id.title)
 	images.push(id.image_url)
 	descriptions.push(id.description)
+	longDescriptions.push(id.long_description)
+	dates.push(id.date_published)
+	rates.push(id.rated)
+	imdbScores.push(id.imdb_score)
+	director.push(id.directors)
+	actor.push(id.actors)
+	durations.push(id.duration)
+	origins.push(id.countries)
+	genres.push(id.genre)
+	boxOffices.push(id.worldwide_gross_income)
 
-	if(titles.length == 40){
+	if(titles.length == maxResultCount){
 		loadHeadMovie(titles, images, descriptions)
-		//console.log(titles)
+		// console.log(boxOffices)
 
-		for(var e = 1; e < 41; e++){
-			loadView(e)
+		for(var element = 1; element < 41; element++){
+			loadView(element)
+			test()
 		}
 	}
 }
@@ -124,22 +152,26 @@ function loadHeadMovie(titles, images, descriptions){
 	description.appendChild(descriptionNode)
 }
 
-function loadView(e){
+function loadView(element){
 	var segment = document.createElement("div")
 	segment.className = "segment"
 
 	var image = document.createElement("img")
-	image.src = images[e]
+	image.src = images[element]
 
 	var headline = document.createElement("h3")
-	var titleNode = document.createTextNode(titles[e])
+	var titleNode = document.createTextNode(titles[element])
 	headline.appendChild(titleNode)
 
 	var moreButton = document.createElement("button")
 	moreButton.className = "moreButton"
+	moreButton.onclick = function(){
+	 	modal.style.display = "block";
+	 	overlayer.style.display = "block";
+	}
 
 	var paragraph = document.createElement("p")
-	var paragraphNode = document.createTextNode(descriptions[e])
+	var paragraphNode = document.createTextNode(descriptions[element])
 	paragraph.appendChild(paragraphNode)
 
 	segment.appendChild(image)
@@ -147,15 +179,103 @@ function loadView(e){
 	segment.appendChild(moreButton)
 	segment.appendChild(paragraph)
 
-	if(e < 8) {
+	if(element < 8) {
 		trackBest.appendChild(segment)
-	}else if(e > 9 && e < 17){
+	}else if(element > 9 && element < 17){
 		trackFirst.appendChild(segment)
-	}else if(e > 19 && e < 27){
+	}else if(element > 19 && element < 27){
 		trackSecond.appendChild(segment)
-	}else if(e > 29 && e < 37){
+	}else if(element > 29 && element < 37){
 		trackThird.appendChild(segment)
 	}
  }
 
+function test(){
 
+	// moreButtons.forEach(button => {
+	// 	button.addEventListener('click', () => {
+	// 		console.log('2')
+	// 	})
+	// })
+	// moreButton.onclick = function(){
+	// 	modal.style.display = "block";
+	// }
+
+	detailButtons = document.querySelectorAll('.moreButton')
+	if(detailButtons.length == 29){
+		for(let number = 0; number < detailButtons.length; number++){
+			detailButtons[number].addEventListener("click", function(){
+				//console.log(number)
+				modalComponent(number);
+			})
+		}
+	}
+
+	closeModal()
+
+}
+
+function closeModal(){
+	closeButton.onclick = function(){
+		modal.style.display = "none"
+		overlayer.style.display = "none"
+		cleanModal()
+	}
+
+	window.onclick = function(event){
+
+		if (event.target == overlayer) {
+			modal.style.display = "none"
+			overlayer.style.display = "none"
+			cleanModal()
+		}
+	}
+
+}
+
+function cleanModal(){
+
+}
+
+///////////////////-- naming à améliorer --////////////////////////////////
+
+function modalComponent(number){
+	picture = document.getElementById("picture")
+	titled = document.getElementById("titleModal")
+	dated = document.getElementById("date")
+	durationd = document.getElementById("duration")
+	genred = document.getElementById("genre")
+	origind = document.getElementById("origin")
+	rate = document.getElementById("rate")
+	imdbScoreX = document.getElementById("imdbScore")
+	boxOfficed = document.getElementById("boxOffice")
+	directord = document.getElementById("director")
+	actord = document.getElementById("actors")
+	descriptiond = document.getElementById("description")
+
+	console.log(number)
+	picture.src = images[number]
+	var titleN = document.createTextNode(titles[number])
+	var date = document.createTextNode(dates[number])
+	var rated = document.createTextNode(rates[number])
+	var imdbScore = document.createTextNode(imdbScores[number])
+	var directors = document.createTextNode(director[number])
+	var actors = document.createTextNode(actor[number])
+	var duration = document.createTextNode(durations[number])
+	var origin = document.createTextNode(origins[number])
+	var boxOffice = document.createTextNode(boxOffices[number])
+	var description = document.createTextNode(longDescriptions[number])
+	var genre = document.createTextNode(genres[number])
+
+	titled.appendChild(titleN)
+	dated.appendChild(date)
+	durationd.appendChild(duration)
+	genred.appendChild(genre)
+	origind.appendChild(origin)
+	rate.appendChild(rated)
+	imdbScoreX.appendChild(imdbScore)
+	boxOfficed.appendChild(boxOffice)
+	directord.appendChild(directors)
+	actord.appendChild(actors)
+	descriptiond.appendChild(description)
+}

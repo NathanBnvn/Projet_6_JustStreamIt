@@ -61,10 +61,13 @@ section
 	font-size: 30px;
 }
 
-#homeBttn
+#homeBttn, #categoryBttn
 {
-	margin-right: 30px;
+	margin-right: 15px;
+	margin-left: 15px;
+	cursor: pointer;
 }
+
 
 #headmovie, #bestcategory, #firstcategory, #secondcategory, #thirdcategory
 {
@@ -79,20 +82,10 @@ section
 	height: 680px;
 	overflow: hidden;
 	align-items: center;
-
-	/*
-
-	justify-content: flex-start;
 	flex-shrink: 0;
-	overflow: hidden;
-	width: 1320px;
-	min-width: 1300px;
-	height: 500px;
-	min-height: 480px;
-	*/
 }
 
-#trackZero, #trackOne, #trackTwo, #trackThree {
+.track {
 	display: flex;
 	transition: transform 2 linear;
 }
@@ -125,10 +118,12 @@ section
 	border-radius: 20px;
 	height: 30px;
 	width: 60px;
+	cursor: pointer;
 }
 
 .segment
 {
+	flex-direction: column;
 	flex-shrink: 0;
 	height: 480px;
 	width: 330px;
@@ -139,28 +134,6 @@ section
 	text-align: center;
 	font-size: 15px;
 	border: 5px grey solid;
-
-	/*
-	height: 480px;
-	min-width: 200px;
-	
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	margin-left: 40px; 
-	margin-right: 40px;
-	*/
-
-}
-
-.changeButton
-{
-	height: 50px;
-	width: 50px;
-	border: 5px orange solid;
-	border-radius: 50%;
-	margin-left: 40px;
-	margin-right: 40px;
 }
 
 .moreButton
@@ -170,5 +143,85 @@ section
 	border-radius: 5%;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	border: 2px red solid; 
+	border: 2px red solid;
+	cursor: pointer;
+}
+
+.changeButton
+{
+	min-height: 50px;
+	min-width: 50px;
+	border: 5px orange solid;
+	border-radius: 50%;
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+.modal 
+{
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 2px green solid;
+	z-index: 10;
+	background-color: white;
+	width: 500px;
+	max-width: 80%;
+	overflow: auto;
+}
+
+.modalContent
+{
+	display: flex;
+	flex-direction: column;
+
+}
+
+.headModal
+{
+	display: flex;
+	border: 3px orange solid;
+}
+
+.headContent
+{
+	width: 50%;
+	margin: 10px;
+}
+
+.bodyModal
+{
+	border: 3px blue solid;
+	display: flex;
+	justify-content: space-around;
+	padding: 5px 5px 5px 5px;
+}
+
+.upperBodyModal
+{
+	border: 3px yellow solid;
+	display: flex;
+	flex-direction: column;
+	width: 100px;
+	justify-content: space-around;
+	padding: 5px 5px 5px 5px;
+}
+
+.footModal
+{
+	border: 3px violet solid;
+	padding: 5px 5px 5px 5px;
+}
+
+#overlayer 
+{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0; 
+	background-color: rgba(0,0,0.2,0.4);
 }
