@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -6,92 +5,110 @@
 		<link rel="stylesheet" href="style.css"/>
 		<title>Just Stream It</title>
 	</head>
-
 	<body>
+
+		<!-- Panneau de navigation -->
+
 		<header id="head">
 			<h2 id="logo">JustStreamIt</h2>
-
 			<nav id="navigation">
-				<h3 id="homeBttn">Accueil</h3>
-				<h3 id="categoryBttn">Catégories</h3>
+				<h3 id="home">Accueil</h3>
+				<h3 id="categories">Catégories</h3>
 			</nav>
-
 		</header>
 
-			<!-- film à l'affiche -->
-		<div id="headmovie">
-			<!-- <img id="image" src=""> -->
-			<h3 id="title"></h3>
-			<button class="moreButton" id="playBttn">Plus</button>
-			<p id="plot"> </p>
+		<!-- Film à l'affiche -->
+
+		<div class="category" id="topmovie">
+			<img id="image" src="">
+			<h3 id="title">Titre</h3>
+			<button class="more-button" id="play-button">Play</button>
+			<p id="description">Synopsis</p>
 		</div>
-			
-		<section>
-			<!-- films les mieux notés -->
-			<button class="changeButton" id="previousBestCategory"></button>
-			<div id="bestcategory">
-				<div class="track" id="trackZero" > </div>
-			</div>
-			<button class="changeButton" id="nextBestCategory"></button>
-		</section>
 
-		<section>
-			<!-- categorie 1 -->
-			<button class="changeButton" id="previousFirstCategory"></button>
-			<div id="firstcategory">
-				<div class="track" id="trackOne" > </div>
-			</div>
-			<button class="changeButton" id="nextFirstCategory"></button>
-		</section>
-		
-		<section>
-			<!-- categorie 2 -->
-			<button class="changeButton" id="previousSecondCategory"></button>
-			<div id="secondcategory">
-				<div class="track" id="trackTwo" > </div>
-			</div>
-			<button class="changeButton" id="nextSecondCategory"></button>
-		</section>
+		<!-- Films les mieux notés -->
 
-		<section>
-			<!-- categorie 3 -->
-			<button class="changeButton" id="previousThirdCategory"></button>
-			<div id="thirdcategory">
-				<div class="track" id="trackThree" > </div>
+		<div class="category" id="best-category">
+			<button data-track-previous="#trackZero" class="change-button Previous"></button>
+			<div class="slideshow-container">
+				<div class="track" id="trackZero"> 
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+				</div>
 			</div>
-			<button class="changeButton" id="nextThirdCategory"></button>
-		</section>
+			<button data-track-next="#trackZero" class="change-button Next"></button>
+		</div>
 
-		<div class="modal" id="modal">
-			<div class="modalContent">
-				<div class="headModal">
-					<div class="pictureModal">
-						<img id="picture" src="">
-					</div>
-					<div class="headContent">
-						<button id="closeButton">&times;</button>
-						<h3 id="titleModal"></h3>
-						<p id="date">date: </p>
-						<p id="duration">durée: </p>
-						<p id="genre">genre: </p>
-						<p id="origin">origine: </p>
-					</div>
+		<!-- Categorie 1 -->
+
+		<div class="category" id="animation-category">
+			<button data-track-previous="#trackOne" class="change-button Previous"></button>
+			<div class="slideshow-container">
+				<div class="track" id="trackOne"> 
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
 				</div>
-				<div class="bodyModal">
-					<p id="rate">rate:</p>
-					<p id="imdbScore">score imdb:</p>
-					<p id="boxOffice">box Office:</p>
+			</div>
+			<button data-track-next="#trackOne" class="change-button Next"></button>
+		</div>
+
+		<!-- Categorie 2 -->
+
+		<div class="category" id="comedy-category">
+			<button data-track-previous="#trackTwo" class="change-button Previous"></button>
+			<div class="slideshow-container">
+				<div class="track" id="trackTwo"> 
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
 				</div>
-				<div class="footModal">
-					<p id="director">réalisateur: </p>
-					<p id="actors">acteurs: </p>
-					<p id="description"></p>
+			</div>
+			<button data-track-next="#trackTwo" class="change-button Next"></button>
+		</div>
+
+		<!-- Categorie 3 -->
+
+		<div class="category" id="crime-category">
+			<button data-track-previous="#trackThree" class="change-button Previous"></button>
+			<div class="slideshow-container">
+				<div class="track" id="trackThree"> 
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
+					<img class="movie-poster" src="">
 				</div>
+			</div>
+			<button data-track-next="#trackThree" class="change-button Next"></button>
+		</div>
+
+		<!-- Modal window -->
+
+		<div id="modal" class="modal">
+			<div class="modal-content">
+				<span id="close-button">&times;</span>
+				<img id=picture src="">
+				<h2 id=titles></h2>
 			</div>
 		</div>
-		<div id="overlayer"></div>
 
-		<!-- Comentaire-->
 		<script src="script.js"></script>
+
 	</body>
 </html>
