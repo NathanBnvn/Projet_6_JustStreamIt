@@ -49,6 +49,8 @@ body
 	height: 80vh;
 	width: 100%;
 	font-size: 25px;
+	justify-content: center;
+	align-items: flex-start;
 	background-position: center;
 	background-size: relative;
 	background-repeat: no-repeat;
@@ -70,6 +72,11 @@ body
 	height: 30px;
 	width: 60px;
 	cursor: pointer;
+}
+
+#description
+{
+	margin-bottom: 80px;
 }
 
 .category
@@ -123,6 +130,7 @@ body
 	align-items: center;
 	text-align: center;
 	font-size: 15px;
+	background-color: yellow;
 	border: 5px grey solid;
 }
 
@@ -147,11 +155,6 @@ body
 	padding: 15px;
 	border: 2px solid orange;
 	width: 80%;
-}
-
-.movie-poster
-{
-	background-color: yellow
 }
 
 #close-button

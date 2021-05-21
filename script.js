@@ -1,36 +1,65 @@
-window.onload = manageCarrousel(), manageModal();
+window.onload = fetchURL(), manageCarrousel(); 
 
-// Récupérer les images et les urls des films
+let urls = []
+let pictures = []
+let surplus = [8, 9, 17, 18, 19, 27, 28, 29, 37, 38, 39, 40]
 
+// Fait bloucler les diverses urls dans fetch
 
-for(i = 0; i < 8; i++){
-	categories = ["", "", "animation", "animation", "comedy", "comedy", "crime", "crime"]
-	pages = ["1", "2", "1", "2", "1", "2", "1", "2"]
+async function fetchURL(){
+	let categories = ["", "", "animation", "animation", "comedy", "comedy", "crime", "crime"]
+	let pages = ["page=1", "page=2", "page=1", "page=2", "page=1", "page=2", "page=1", "page=2"]
 
-	category = categories[i]
-	page = pages[i]
+	for(let i = 0; i < categories.length; i++){
+		category = categories[i];
+		page = pages[i];
+		var movie = await fetch("http://127.0.0.1:8000/api/v1/titles/?genre=" + category + "&" + page + "&sort_by=-imdb_score")
+		var data = await movie.json()
+		fetchMovies(data.results)
+	}
+}
 
-	if(category == ""){
-		getUrls(category, page)
+// Récupère les données que je stocke dans un tableau pour mieux appeler les urls
+
+async function fetchMovies(results){
+	for(let n = 0; n < results.length; n++){
+		url = results[n].url
+		urls.push(url)
+	}
+
+	if(urls.length == 40){
+		for (var i = 0; i < urls.length; i++) {
+		 	var movie = await fetch(urls[i])
+		 	var data = await movie.json()
+		 	parseImages(data)
+		}
 	}
 
 }
 
-function getUrls(category, page){
-	url = "http://127.0.0.1:8000/api/v1/titles/?genre=" + category + "&page=" + page + "&sort_by=-imdb_score" 
+// Rassemble les urls des images qui sont ensuite filtrer puis afficher
 
-	fetch(url)
-	.then(response => response.json())
-	.then(values => loadImages(values))
+function parseImages(data){
+	pictures.push(data.image_url)
+	
+	if(pictures.length == 40){
+		var images = pictures.filter(function(element, index){
+			return surplus.indexOf(index) == -1
+		})
+
+		for(let i = 0; i < images.length; i++) {
+			picture = document.querySelectorAll('img')[i];
+			picture.src = images[i]
+
+			picture.addEventListener("click", function(){
+				openModal()
+			})
+		}
+	}
 }
 
-
-
-// Afficher les images
-
 function loadTopMovie(titles, images, descriptions){
-	image = document.getElementById("image")
-	image.src = ""
+	let play = document.getElementById("play-button")
 	
 	title = document.getElementById("title")
 	var titleNode = document.createTextNode("")
@@ -39,32 +68,29 @@ function loadTopMovie(titles, images, descriptions){
 	description = document.getElementById("description")
 	var descriptionNode = document.createTextNode("")
 	description.appendChild(descriptionNode)
-}
-
-function loadImages(url){
-	console.log(url)
-}
-// Afficher le contenu de la fenêtre
-
-// les fenêtres modals
-
-function manageModal(){
-	var modal = document.getElementById("modal")
-	var play = document.getElementById("play-button")
-	var close = document.getElementById("close-button")
-	// var images = document.querySelectorAll("movie-poster")
 
 	play.onclick = function(){
-		modal.style.display = "block"
+		openModal()
 	}
+}
 
-	//console.log(images)
+// gère l'ouverture des fenêtres modals
 
-	//images.forEach(imageButton => {
-	// 	imageButton.addEventListener("click", () => {
-	// 		modal.style.display = "block"
-	// 	})
+function openModal(){
+	modal.style.display = "block"
+	
+
+	// console.log(pictures)
+
+	// pictures.forEach(imageButton => {
+	//  	imageButton.addEventListener("click", () => {
+	//  		modal.style.display = "block"
+	//  	})
 	// })
+}
+
+function closeModal(){
+	var close = document.getElementById("close-button")
 
 	close.onclick = function(){
 		modal.style.display = "none"
@@ -77,7 +103,7 @@ function manageModal(){
 	}
 }
 
-// Le carrousel
+// Gère le fonctionnement du carrousel
 
 function manageCarrousel(){
 	const nextButtons = document.querySelectorAll("[data-track-next]")
