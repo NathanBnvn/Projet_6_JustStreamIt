@@ -63,6 +63,11 @@ body
 	margin-top: 20px;
 }
 
+#play-button, .change-button, .movie-poster
+{
+	cursor: pointer;
+}
+
 #play-button
 {
 	background: rgb(252, 74, 3);
@@ -99,6 +104,7 @@ body
 	border-radius: 50%;
 	margin-left: 40px;
 	margin-right: 40px;
+
 }
 
 .slideshow-container
@@ -123,9 +129,9 @@ body
 	flex-direction: column;
 	flex-shrink: 0;
 	height: 480px;
-	width: 330px;
-	padding-right: 50px;
-	padding-left: 50px;
+	width: 220px;
+	margin-right: 50px;
+	margin-left: 50px;
 	box-sizing: border-box;
 	align-items: center;
 	text-align: center;
@@ -151,10 +157,16 @@ body
 .modal-content
 {
 	background-color: white;
+	overflow-wrap: break-word;
 	margin: 5% auto;
 	padding: 15px;
 	border: 2px solid orange;
 	width: 80%;
+}
+
+.paragraph-modal
+{
+	word-wrap: break-word;
 }
 
 #close-button
