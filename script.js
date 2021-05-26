@@ -4,6 +4,7 @@ let urls = []
 var pictures = []
 var movies = []
 let maxResults = 40
+let maxResultsExpected = 29 
 let surplus = [8, 9, 17, 18, 19, 27, 28, 29, 37, 38, 39, 40]
 
 // Fait bloucler les diverses urls dans fetch
@@ -56,7 +57,7 @@ function parseImages(){
 		}
 	}
 
-	for(var n = 0; n < 29; n++){
+	for(var n = 0; n < maxResultsExpected; n++){
 		photoframe = document.querySelectorAll('img')[n]
 		photoframe.src = pictures[n]
 
@@ -91,7 +92,7 @@ function openModal(){
 	var imageModal = document.getElementById("modal-picture")
 	var titleModal = document.getElementById("modal-title")
 	var paragraph = document.getElementById("modal-paragraph")
-	paragraph.setAttribute("style", "white-space: pre")
+	paragraph.setAttribute("style", "white-space: pre-line")
 
 	if(eventSender.id == "play-button"){
 		imageModal.src = movies[0][0]
@@ -129,6 +130,9 @@ function closeModal(){
 
 function manageCarrousel(){
 	const nextButtons = document.querySelectorAll("[data-track-next]")
+	// window.addEventListener('resize', () => {
+		
+	// })
 	sectionWidth = document.getElementsByClassName("slideshow-container")[0].offsetWidth
 	incrementValue = sectionWidth / 4 * 3 
 
