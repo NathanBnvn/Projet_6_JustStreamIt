@@ -1,4 +1,4 @@
-window.onload = fetchURL(), manageCarrousel(), closeModal(); 
+window.onload = fetchURL(), closeModal(); 
 
 let urls = []
 var pictures = []
@@ -128,13 +128,18 @@ function closeModal(){
 
 // Gère le fonctionnement du carrousel
 
+let sectionWidth = document.getElementsByClassName("slideshow-container")[0].offsetWidth
+		
+window.addEventListener('resize', () => {
+	sectionWidth = document.getElementsByClassName("slideshow-container")[0].offsetWidth
+	manageCarrousel()
+})
+
+
 function manageCarrousel(){
 	const nextButtons = document.querySelectorAll("[data-track-next]")
-	// window.addEventListener('resize', () => {
-		
-	// })
-	sectionWidth = document.getElementsByClassName("slideshow-container")[0].offsetWidth
-	incrementValue = sectionWidth / 4 * 3 
+	console.log(sectionWidth)
+	incrementValue = sectionWidth / 4 * 3
 
 	nextButtons.forEach(button => {
 		button.addEventListener("click", () => {
@@ -151,3 +156,5 @@ function manageCarrousel(){
 		})
 	})
 }
+
+manageCarrousel()

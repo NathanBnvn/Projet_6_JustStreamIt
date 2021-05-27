@@ -19,7 +19,6 @@ body, html
 	display: flex;
 	min-height: 70vh;
 	max-width: 100%;
-	border: 3px red solid;
 }
 
 #head, #navigation
@@ -50,36 +49,14 @@ body, html
 	margin-left: 15px;
 }
 
-.category-title
-{
-	text-align: center;
-	margin-top: 15px; 
-	margin-bottom: 5px;
-}
-
-.movie-poster
-{
-	flex-shrink: 0;
-	height: auto;
-	width: 12vw;
-	margin-right: 2.5%;
-	margin-left: 2.5%;
-	box-sizing: border-box;
-	align-items: center;
-	text-align: center;
-}
-
 #head, .category
 {
 	width: 100%
 	min-width: 600px;
 }
 
-
-
 #topmovie
 {
-	
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
@@ -108,6 +85,25 @@ body, html
   max-width: 220px;
 }
 
+.category-title
+{
+	text-align: center;
+	margin-top: 15px; 
+	margin-bottom: 5px;
+}
+
+.movie-poster
+{
+	flex-shrink: 0;
+	height: auto;
+	width: 12vw;
+	margin-right: 2.5%;
+	margin-left: 2.5%;
+	box-sizing: border-box;
+	align-items: center;
+	text-align: center;
+}
+
 #play-button, .change-button, .movie-poster, #home, #categories, #close-button
 {
 	cursor: pointer;
@@ -116,18 +112,14 @@ body, html
 #play-button
 {
 	background: rgb(252, 74, 3);
-	font-size: 20px;
 	text-align: center;
 	border-radius: 20px;
 	height: 30px;
 	width: 60px;
 }
 
-
-
 .category
 {
-
 	justify-content: center;
 	align-items: center;
 	margin-top: 25px;
@@ -137,14 +129,13 @@ body, html
 
 .change-button
 {
-	min-height: 50px;
-	min-width: 50px;
-	font-size: 20px;
-	border: 2px solid;
-	color: white;
-	border-color: rgb(59,94,125);
-	background-color: rgb(59,94,125);
-	border-radius: 50%;
+	min-height: 30px;
+	min-width: 30px;
+	font-size: 10px;
+	color: black;
+	border: none;
+	align-items: center;
+	background-color: white;
 	margin-left: 40px;
 	margin-right: 40px;
 }
@@ -157,7 +148,6 @@ body, html
 	align-items: center;
 	overflow: hidden;
 	flex-shrink: 0;
-	border: 3px blue solid;
 }
 
 .track 
@@ -165,7 +155,6 @@ body, html
 	display: flex;
 	transition: transform 2 linear;
 }
-
 
 .modal
 {
@@ -193,8 +182,12 @@ body, html
 {
 	color: black;
 	float: right;
-	font-size: 20px;
 	font-weight: bold;
+}
+
+#close-button, #play-button
+{
+	font-size: 20px;
 }
 
 @media all and (max-width: 1680px) {
@@ -202,7 +195,6 @@ body, html
 	body 
 	{
 		font-size: 14pt;
-		color: pink;
 	}
 }
 
@@ -211,7 +203,6 @@ body, html
 	body
 	{
 		font-size: 12pt;
-
 	}
 
 	.category-title
@@ -235,6 +226,15 @@ body, html
 		margin-left: 20px;
 	}
 
+	.change-button
+	{
+		height: 25px;
+		width: 25px;
+		font-size: 10px;
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+
 }
 
 @media all and (max-device-width: 480px)
@@ -249,6 +249,15 @@ body, html
 		text-align: center;
 		margin-top: 5px; 
 		margin-bottom: 1.2px;
+	}
+	
+	.change-button
+	{
+		height: 10px;
+		width: 10px;
+		font-size: 5px;
+		margin-left: 10px;
+		margin-right: 10px;
 	}
 
 }
