@@ -17,16 +17,16 @@ body, html
 .category
 {
 	display: flex;
-	min-height: 70vh;
+	min-height: 40vh;
 	max-width: 100%;
 }
 
 #head, #navigation
 {
 	background-color: rgb(59,94,125);
-	margin : auto;
-	color : white;
-	width : 100%;
+	margin: auto;
+	color: white;
+	width: 100%;
 	min-height: 20vh;
 	display: flex;
 	align-items: center;
@@ -51,7 +51,7 @@ body, html
 
 #head, .category
 {
-	width: 100%
+	width: 100%;
 	min-width: 600px;
 }
 
@@ -88,8 +88,8 @@ body, html
 .category-title
 {
 	text-align: center;
-	margin-top: 15px; 
-	margin-bottom: 5px;
+	margin-top: 8px; 
+	margin-bottom: 3px;
 }
 
 .movie-poster
@@ -122,8 +122,8 @@ body, html
 {
 	justify-content: center;
 	align-items: center;
-	margin-top: 25px;
-	margin-bottom: 100px;
+	margin-top: 5px;
+	margin-bottom: 10px;
 }
 
 
@@ -153,7 +153,6 @@ body, html
 .track 
 {
 	display: flex;
-	transition: transform 2 linear;
 }
 
 .modal
@@ -208,8 +207,8 @@ body, html
 	.category-title
 	{
 		text-align: center;
-		margin-top: 13px; 
-		margin-bottom: 3px;
+		margin-top: 6px; 
+		margin-bottom: 1px;
 	}
 
 }
@@ -237,7 +236,7 @@ body, html
 
 }
 
-@media all and (max-device-width: 480px)
+@media all and (max-width: 480px)
 {
 	body
 	{
@@ -247,8 +246,8 @@ body, html
 	.category-title
 	{
 		text-align: center;
-		margin-top: 5px; 
-		margin-bottom: 1.2px;
+		margin-top: 4px; 
+		margin-bottom: 0.5px;
 	}
 	
 	.change-button

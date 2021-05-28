@@ -3,6 +3,8 @@ window.onload = fetchURL(), closeModal();
 let urls = []
 var pictures = []
 var movies = []
+let movieCount = 4
+let newMovie = 3
 let maxResults = 40
 let maxResultsExpected = 29 
 let surplus = [8, 9, 17, 18, 19, 27, 28, 29, 37, 38, 39, 40]
@@ -139,7 +141,7 @@ window.addEventListener('resize', () => {
 function manageCarrousel(){
 	const nextButtons = document.querySelectorAll("[data-track-next]")
 	console.log(sectionWidth)
-	incrementValue = sectionWidth / 4 * 3
+	incrementValue = sectionWidth / movieCount * newMovie
 
 	nextButtons.forEach(button => {
 		button.addEventListener("click", () => {
