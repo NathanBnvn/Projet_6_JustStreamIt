@@ -1,7 +1,6 @@
 window.onload = fetchURL(), closeModal(); 
 
 let urls = []
-var pictures = []
 var movies = []
 let movieCount = 4
 let newMovie = 3
@@ -46,22 +45,19 @@ async function fetchMovies(results){
 // Je filtre l'ensemble de mes résultats pour garder les 29 attendus
 
 function parseImages(){
-	var filter = surplus.find(excedent => excedent == i)
 	photoframe = document.querySelectorAll('img')
 
 	for(var i = 0; i < maxResults; i++){
 		var filter = surplus.find(excedent => excedent == i)
 		if(! (i == filter)){
-			picture = this["movie" + i][0]
 			movie = this["movie" + i]
-			pictures.push(picture)
 			movies.push(movie)
 		}
 	}
 
 	for(var n = 0; n < maxResultsExpected; n++){
 		photoframe = document.querySelectorAll('img')[n]
-		photoframe.src = pictures[n]
+		photoframe.src = movies[n][0]
 
 		if(n > 0){
 			photoframe.addEventListener("click", function(){
